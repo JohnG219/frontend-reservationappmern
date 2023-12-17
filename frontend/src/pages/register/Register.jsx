@@ -118,7 +118,7 @@ const Register = () => {
         img: url,
       };
 
-      await axios.post("/auth/register", newUser);
+      await axios.post("https://backend-server-reservation.onrender.com/api/auth/register", newUser);
       setSubmitted(true);
       setInfo({
         severity: "success",
