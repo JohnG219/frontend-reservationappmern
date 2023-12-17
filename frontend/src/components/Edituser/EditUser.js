@@ -9,7 +9,7 @@ import { Alert } from "@mui/material";
 import { ColorRing } from "react-loader-spinner";
 
 const EditUser = () => {
-    const { user } = useContext(AuthContext);
+      const { user } = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,7 @@ const EditUser = () => {
   const { error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  //   Handle Change Function
+  // Handle Change Function
   const handleChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
@@ -76,7 +76,6 @@ const EditUser = () => {
         data.append("file", file);
         data.append("upload_preset", "upload");
 
-        // Update the Cloudinary API URL
         const uploadRes = await axios.post(
           "https://api.cloudinary.com/v1_1/dr4iesryu/image/upload",
           data
@@ -85,17 +84,23 @@ const EditUser = () => {
         updatedCredentials.img = url;
       }
 
-      // Update the API server URL
+      const config = {
+        headers: {
+          Authorization: `Bearer ${user.token}`,
+        },
+      };
+
       const res = await axios.put(
         `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
-        updatedCredentials
+        updatedCredentials,
+        config
       );
 
       setInfo({
         severity: "success",
         message: "Credentials Update Success!",
       });
-      navigate("/login"); // Use navigate instead of window.location.assign
+      navigate("/login");
     } catch (err) {
       console.log(err);
       setInfo({
@@ -109,6 +114,7 @@ const EditUser = () => {
   };
 
   console.log(credentials1);
+    
   return (
     <div className="login2">
       <div className="lContainer13">
