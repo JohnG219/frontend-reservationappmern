@@ -2,8 +2,8 @@ import useFetch from "../../hooks/useFetch";
 import "./featured.css";
 
 const Featured = () => {
-  const { data, loading, error } = useFetch(
-    "hotels/countByCity?cities=singapore,australia,philippines,norway,switzerland"
+   const { data, loading, error } = useFetch(
+    "https://backend-server-reservation.onrender.com/api/hotels/countByCity?cities=singapore,australia,philippines,norway,switzerland"
   );
 
   return (
