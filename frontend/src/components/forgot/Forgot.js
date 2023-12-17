@@ -11,16 +11,16 @@ import Swal from "sweetalert2";
 
 const Forgot = () => {
   const { data, loading, error } = useFetch(`https://backend-server-reservation.onrender.com/api/users/`);
-  const [credentials, setCredentials] = useState("");
+   const [credentials, setCredentials] = useState("");
   const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
   const [email, setUseremail] = useState("");
-  // setUseremail(element.useremail)
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
 
-  const [countdown, setCountdown] = useState(10); 
+  const [countdown, setCountdown] = useState(10);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
+
   const startCountdown = () => {
     setIsCountdownActive(true);
     let timeLeft = countdown;
@@ -33,36 +33,46 @@ const Forgot = () => {
         clearInterval(countdownInterval);
         navigate("/forgotid", { state: { userid, username } });
       }
-    }, 100); 
+    }, 100);
   };
 
-    const handleClick = async (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    data.forEach((element) => {
-      if (credentials == element.email) {
-        setUserid(element._id);
-        setUsername(element.username);
+    try {
+      const foundUser = data.find((element) => credentials === element.email);
+
+      if (foundUser) {
+        setUserid(foundUser._id);
+        setUsername(foundUser.username);
+        Swal.fire({
+          icon: "success",
+          title: "Connect Success",
+          text: "",
+        });
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Email not found",
+          text: "Please check your email and reconnect.",
+        });
       }
-    });
-    Swal.fire({
-      icon: "success",
-      title: "Connect Success",
-      text: "",
-    });
+    } catch (error) {
+      console.error("Error while handling click:", error);
+    }
   };
 
   const handleclick = async (e) => {
     e.preventDefault();
-    if (userid == "") {
+    if (userid === "") {
       setInfo({
         severity: "error",
         message:
-          "Email not found! please check your email and reconnect it again...",
+          "Email not found! Please check your email and reconnect it again...",
       });
     } else {
       setInfo({
         severity: "success",
-        message: "Email Connected! you can now reset your password",
+        message: "Email Connected! You can now reset your password",
       });
       startCountdown();
     }
