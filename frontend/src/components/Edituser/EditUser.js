@@ -9,7 +9,7 @@ import { Alert } from "@mui/material";
 import { ColorRing } from "react-loader-spinner";
 
 const EditUser = () => {
-      const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(false);
@@ -35,7 +35,8 @@ const EditUser = () => {
   const { error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // Handle Change Function
+
+  //   Handle Change Function
   const handleChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
@@ -84,18 +85,10 @@ const EditUser = () => {
         updatedCredentials.img = url;
       }
 
-      const config = {
-        headers: {
-          Authorization: `Bearer ${user.token}`,
-        },
-      };
-
       const res = await axios.put(
-        `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
-        updatedCredentials,
-        config
+        `https://backend-server-reservation.onrender.com/users/update/${user._id}`,
+        updatedCredentials
       );
-
       setInfo({
         severity: "success",
         message: "Credentials Update Success!",
@@ -114,7 +107,7 @@ const EditUser = () => {
   };
 
   console.log(credentials1);
-    
+
   return (
     <div className="login2">
       <div className="lContainer13">
