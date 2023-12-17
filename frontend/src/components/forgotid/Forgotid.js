@@ -36,7 +36,9 @@ const Forgotid = () => {
           severity: "success",
           message: "Your password has been changed",
         });
+        setTimeout(() => {
         navigate("/login");
+      }, 2000); 
       } else {
         setInfo({
           severity: "error",
