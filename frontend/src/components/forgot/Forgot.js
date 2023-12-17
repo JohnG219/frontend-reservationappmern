@@ -37,19 +37,21 @@ const Forgot = () => {
   };
 
   const handleClick = async (e) => {
-    e.preventDefault();
-    data.forEach((element) => {
-      if (credentials == element.email) {
-        setUserid(element._id);
-        setUsername(element.username);
-      }
-    });
-    Swal.fire({
-      icon: "success",
-      title: "Connect Success",
-      text: "",
-    });
-  };
+  e.preventDefault();
+  for (const element of data) {
+    if (credentials === element.email) {
+      setUserid(element._id);
+      setUsername(element.username);
+      break; // Stop the loop once a match is found
+    }
+  }
+  Swal.fire({
+    icon: "success",
+    title: "Connect Success",
+    text: "",
+  });
+};
+
 
   const handleclick = async (e) => {
     e.preventDefault();
