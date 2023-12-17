@@ -31,7 +31,7 @@ const Forgotid = () => {
 
     try {
       if (credentials.password == credentials.password2) {
-        const res = await axios.put(`/users/update/${userid}`, credentials);
+        const res = await axios.put(`https://backend-server-reservation.onrender.com/api/users/update/${userid}`, credentials);
         setInfo({
           severity: "success",
           message: "Your password has been changed",
