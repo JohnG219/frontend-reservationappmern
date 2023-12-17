@@ -85,8 +85,9 @@ const EditUser = () => {
         updatedCredentials.img = url;
       }
 
+      const apiUrl = process.env.REACT_APP_API_BASE_URL;
       const res = await axios.put(
-        `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
+        `${apiUrl}/users/update/${user._id}`,
         updatedCredentials
       );
       setInfo({
