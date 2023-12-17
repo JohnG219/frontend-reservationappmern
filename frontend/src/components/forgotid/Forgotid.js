@@ -38,7 +38,7 @@ const Forgotid = () => {
         });
         setTimeout(() => {
         navigate("/login");
-      }, 2000); 
+      }, 1000); 
       } else {
         setInfo({
           severity: "error",
