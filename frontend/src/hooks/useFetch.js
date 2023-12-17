@@ -13,11 +13,11 @@ const useFetch = (endpoint) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(url);
-        setData(res.data);
-      } catch (err) {
-        setError(err);
-      }
+          const res = await axios.get(url);
+          setData(res?.data || []);
+        } catch (err) {
+          setError(err.message || 'An error occurred');
+        }
       setLoading(false);
     };
     fetchData();
@@ -26,11 +26,11 @@ const useFetch = (endpoint) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url);
-      setData(res.data);
-    } catch (err) {
-      setError(err);
-    }
+       const res = await axios.get(url);
+          setData(res?.data || []);
+      } catch (err) {
+        setError(err.message || 'An error occurred');
+      }
     setLoading(false);
   };
 
