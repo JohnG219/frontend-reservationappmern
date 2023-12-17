@@ -39,7 +39,7 @@ const Forgot = () => {
     const handleClick = async (e) => {
     e.preventDefault();
     data.forEach((element) => {
-      if (credentials.trim().toLowerCase() === element.email.trim().toLowerCase()) {
+      if (credentials == element.email) {
         setUserid(element._id);
         setUsername(element.username);
       }
