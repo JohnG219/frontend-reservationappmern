@@ -124,7 +124,7 @@ const Register = () => {
         severity: "success",
         message: "Your Registration has been Successful!🎉",
       });
-      window.location.assign("/login");
+      navigate("/login");
     } catch (err) {
       console.log(err);
       setInfo({ severity: "error", message: "Error, please fill each field" });
