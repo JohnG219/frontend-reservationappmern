@@ -124,7 +124,9 @@ const Register = () => {
         severity: "success",
         message: "Your Registration has been Successful!🎉",
       });
-      navigate("/login");
+       setTimeout(() => {
+        navigate("/login");
+      }, 2000); 
     } catch (err) {
       console.log(err);
       setInfo({ severity: "error", message: "Error, please fill each field" });
