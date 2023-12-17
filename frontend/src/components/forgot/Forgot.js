@@ -1,7 +1,4 @@
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import "./Forgot.css";
@@ -10,17 +7,15 @@ import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
 
 const Forgot = () => {
-  const { data, loading, error } = useFetch(`https://backend-server-reservation.onrender.com/api/users/`);
+  const { data, loading } = useFetch(`/users/`);
   const [credentials, setCredentials] = useState("");
   const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setUseremail] = useState("");
-  // setUseremail(element.useremail)
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
-
-  const [countdown, setCountdown] = useState(10); 
+  const [countdown, setCountdown] = useState(10);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
+
   const startCountdown = () => {
     setIsCountdownActive(true);
     let timeLeft = countdown;
@@ -33,7 +28,7 @@ const Forgot = () => {
         clearInterval(countdownInterval);
         navigate("/forgotid", { state: { userid, username } });
       }
-    }, 100); 
+    }, 100);
   };
 
   const handleClick = (e) => {
@@ -82,13 +77,15 @@ const Forgot = () => {
   };
 
   return (
-    <body className="regBody2">
+    <div className="regBody2">
       <div className="login1">
         <NavLink to="/login" className="close-button" onClick={handleCancel}>
           <CloseIcon />
         </NavLink>
         <div className="lContainer">
-          <span className="sp">Connect Your Email to Reset Password </span>
+          <span className="sp">
+            Connect Your Email to Reset Password{" "}
+          </span>
           {info.message && (
             <Alert
               severity={info.severity}
@@ -119,19 +116,18 @@ const Forgot = () => {
             onClick={handleClick}
             className="lButton97"
           >
-            {" "}
             Connect Email
           </button>
           <button
             disabled={loading}
-            onClick={handleclick}
+            onClick={handleResetPassword}
             className="lButton97"
           >
             Reset Password
           </button>
         </div>
       </div>
-    </body>
+    </div>
   );
 };
 
