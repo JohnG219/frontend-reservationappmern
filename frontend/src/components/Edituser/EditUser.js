@@ -87,7 +87,7 @@ const EditUser = () => {
 
       const token = "oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs="; 
       const res = await axios.put(
-        `https://backend-server-reservation.onrender.com/users/update/${user._id}`,
+        `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
         updatedCredentials,
         {
           headers: {
