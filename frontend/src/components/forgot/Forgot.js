@@ -36,35 +36,42 @@ const Forgot = () => {
     }, 100); 
   };
 
-  const handleClick = async (e) => {
-  e.preventDefault();
-  for (const element of data) {
-    if (credentials === element.email) {
-      setUserid(element._id);
-      setUsername(element.username);
-      break; // Stop the loop once a match is found
-    }
-  }
-  Swal.fire({
-    icon: "success",
-    title: "Connect Success",
-    text: "",
-  });
-};
-
-
-  const handleclick = async (e) => {
+  const handleClick = (e) => {
     e.preventDefault();
-    if (userid == "") {
+    const lowercasedCredentials = credentials.toLowerCase();
+    const foundUser = data.find(
+      (element) => lowercasedCredentials === element.email.toLowerCase()
+    );
+
+    if (foundUser) {
+      setUserid(foundUser._id);
+      setUsername(foundUser.username);
+      Swal.fire({
+        icon: "success",
+        title: "Connect Success",
+        text: "",
+      });
+    } else {
       setInfo({
         severity: "error",
         message:
-          "Email not found! please check your email and reconnect it again...",
+          "Email not found! Please check your email and reconnect it again...",
+      });
+    }
+  };
+
+  const handleResetPassword = (e) => {
+    e.preventDefault();
+    if (userid === "") {
+      setInfo({
+        severity: "error",
+        message:
+          "Email not found! Please check your email and reconnect it again...",
       });
     } else {
       setInfo({
         severity: "success",
-        message: "Email Connected! you can now reset your password",
+        message: "Email Connected! You can now reset your password.",
       });
       startCountdown();
     }
