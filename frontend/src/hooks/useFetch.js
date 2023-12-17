@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = () => {
+const useFetch = (url) => {
   const proxyServerUrl = "https://backend-server-reservation.onrender.com";
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
