@@ -126,7 +126,7 @@ const Register = () => {
       });
        setTimeout(() => {
         navigate("/login");
-      }, 2000); 
+      }, 1000); 
     } catch (err) {
       console.log(err);
       setInfo({ severity: "error", message: "Error, please fill each field" });
