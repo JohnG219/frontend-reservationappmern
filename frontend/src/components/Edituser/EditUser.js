@@ -87,14 +87,13 @@ const EditUser = () => {
 
       const res = await axios.put(
         `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
-        updatedCredentials,
-        { headers: { Authorization: `Bearer oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs=` } }
+        updatedCredentials
       );
       setInfo({
         severity: "success",
         message: "Credentials Update Success!",
       });
-      window.location.assign("/login");
+      navigate("/login");
     } catch (err) {
       console.log(err);
       setInfo({
