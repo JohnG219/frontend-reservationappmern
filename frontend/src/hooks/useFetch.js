@@ -13,8 +13,7 @@ const useFetch = (endpoint) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const token = "oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs="; 
-        const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
+        const res = await axios.get(url);
         setData(res.data);
       } catch (err) {
         setError(err);
@@ -27,8 +26,7 @@ const useFetch = (endpoint) => {
   const reFetch = async () => {
     setLoading(true);
     try {
-       const token = "oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs=";
-      const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(url);
       setData(res.data);
     } catch (err) {
       setError(err);
