@@ -36,10 +36,10 @@ const Forgot = () => {
     }, 100); 
   };
 
-  const handleClick = async (e) => {
+    const handleClick = async (e) => {
     e.preventDefault();
     data.forEach((element) => {
-      if (credentials == element.email) {
+      if (credentials.trim().toLowerCase() === element.email.trim().toLowerCase()) {
         setUserid(element._id);
         setUsername(element.username);
       }
