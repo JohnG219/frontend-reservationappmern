@@ -86,7 +86,7 @@ const EditUser = () => {
       }
 
       const res = await axios.put(
-        `https://backend-server-reservation.onrender.com/users/update/${user._id}`,
+        `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
         updatedCredentials
       );
       setInfo({
