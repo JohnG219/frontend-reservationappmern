@@ -87,7 +87,8 @@ const EditUser = () => {
 
       const res = await axios.put(
         `https://backend-server-reservation.onrender.com/api/users/update/${user._id}`,
-        updatedCredentials
+        updatedCredentials,
+        { headers: { Authorization: `Bearer oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs=` } }
       );
       setInfo({
         severity: "success",
