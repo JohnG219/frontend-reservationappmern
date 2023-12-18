@@ -84,7 +84,7 @@ const Contact = () => {
         setShowSpinner(true);
 
         try {
-          const res = await axios.put("/transaction/create", bidpay);
+          const res = await axios.put("https://backend-server-reservation.onrender.com/api/transaction/create", bidpay);
           setTimeout(() => {
             setIsLoading(false);
             setShowSpinner(false);
@@ -92,8 +92,8 @@ const Contact = () => {
               severity: "success",
               message: "Payment transaction success",
             });
-            window.location.assign("/login");
-          }, 25000);
+            navigate("/login");
+          }, 15000);
         } catch (err) {
           // Handle error
         }
@@ -136,7 +136,7 @@ const Contact = () => {
     }
 
     try {
-      const res = await axios.put("/contact/create", bidsc);
+      const res = await axios.put("https://backend-server-reservation.onrender.com/api/contact/create", bidsc);
       setInfo({
         severity: "success",
         message: "Request has been sent",
