@@ -84,14 +84,12 @@ const EditUser = () => {
         const { url } = uploadRes.data;
         updatedCredentials.img = url;
       }
-
-      const apiUrl = process.env.REACT_APP_API_BASE_URL;
-      const res = await axios.put(
-        `${apiUrl}/users/update/${user._id}`,
-        updatedCredentials,
-        { headers: { 'JWT': 'oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs=' } }
-      );
       
+      const res = await axios.put(
+        `/users/update/${user._id}`,
+        updatedCredentials
+      );
+     
       setInfo({
         severity: "success",
         message: "Credentials Update Success!",
