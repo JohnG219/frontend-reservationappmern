@@ -37,33 +37,33 @@ const Forgot = () => {
   };
 
   const handleClick = async (e) => {
-    e.preventDefault();
-    data.forEach((element) => {
-      if (credentials == element.email) {
-        setUserid(element._id);
-        setUsername(element.username);
-      }
-    });
-    Swal.fire({
-      icon: "success",
-      title: "Connect Success",
-      text: "",
-    });
-  };
+  e.preventDefault();
 
-  const handleclick = async (e) => {
-    e.preventDefault();
-    if (userid == "") {
-      setInfo({
-        severity: "error",
-        message:
-          "Email not found! please check your email and reconnect it again...",
+  try {
+    const response = await axios.get(`https://backend-server-reservation.onrender.com/api/users/?email=${credentials}`);
+    const user = response.data[0];
+
+    if (user) {
+      setUserid(user._id);
+      setUsername(user.username);
+
+      Swal.fire({
+        icon: "success",
+        title: "Connect Success",
+        text: "",
       });
     } else {
       setInfo({
-        severity: "success",
-        message: "Email Connected! you can now reset your password",
+        severity: "error",
+        message: "Email not found! Please check your email and reconnect it again...",
       });
+    }
+  } catch (error) {
+    console.error("Error fetching user:", error);
+    setInfo({
+      severity: "error",
+      message: "Error connecting email. Please try again later.",
+    });
       startCountdown();
     }
   };
