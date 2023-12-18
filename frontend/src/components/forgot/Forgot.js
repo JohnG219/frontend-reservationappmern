@@ -1,10 +1,6 @@
-import axios from "axios";
-import { useContext, useEffect } from "react";
-import { useState } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import React, { useState, useEffect } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
-import "./Forgot.css";
 import { Alert } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
@@ -14,13 +10,32 @@ const Forgot = () => {
   const [credentials, setCredentials] = useState("");
   const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
-  const [email, setUseremail] = useState("");
-  // setUseremail(element.useremail)
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
-
-  const [countdown, setCountdown] = useState(10); 
+  const [countdown, setCountdown] = useState(10);
   const [isCountdownActive, setIsCountdownActive] = useState(false);
+
+  useEffect(() => {
+    if (data && credentials !== "") {
+      const foundUser = data.find((element) => element.email === credentials);
+      if (foundUser) {
+        setUserid(foundUser._id);
+        setUsername(foundUser.username);
+        setInfo({
+          severity: "success",
+          message: "Email Connected! You can now reset your password.",
+        });
+        startCountdown();
+      } else {
+        setInfo({
+          severity: "error",
+          message:
+            "Email not found! Please check your email and reconnect it again...",
+        });
+      }
+    }
+  }, [data, credentials]);
+
   const startCountdown = () => {
     setIsCountdownActive(true);
     let timeLeft = countdown;
@@ -33,39 +48,17 @@ const Forgot = () => {
         clearInterval(countdownInterval);
         navigate("/forgotid", { state: { userid, username } });
       }
-    }, 100); 
+    }, 100);
   };
 
   const handleClick = async (e) => {
     e.preventDefault();
-    data.forEach((element) => {
-      if (credentials == element.email) {
-        setUserid(element._id);
-        setUsername(element.username);
-      }
-    });
-    Swal.fire({
-      icon: "success",
-      title: "Connect Success",
-      text: "",
-    });
+    // Logic moved to useEffect
   };
 
   const handleclick = async (e) => {
     e.preventDefault();
-    if (userid == "") {
-      setInfo({
-        severity: "error",
-        message:
-          "Email not found! please check your email and reconnect it again...",
-      });
-    } else {
-      setInfo({
-        severity: "success",
-        message: "Email Connected! you can now reset your password",
-      });
-      startCountdown();
-    }
+    // Logic moved to useEffect
   };
 
   const handleCancel = () => {
@@ -79,7 +72,9 @@ const Forgot = () => {
           <CloseIcon />
         </NavLink>
         <div className="lContainer">
-          <span className="sp">Connect Your Email to Reset Password </span>
+          <span className="sp">
+            Connect Your Email to Reset Password
+          </span>
           {info.message && (
             <Alert
               severity={info.severity}
