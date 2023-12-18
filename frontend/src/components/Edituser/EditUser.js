@@ -110,8 +110,7 @@ const EditUser = () => {
   };
 
   console.log(credentials1);
-  console.log(req.cookies); 
-
+  
   return (
     <div className="login2">
       <div className="lContainer13">
