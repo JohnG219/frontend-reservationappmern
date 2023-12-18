@@ -78,6 +78,20 @@ const Header = ({ type }) => {
        });
        return;
      }
+
+    const startDate = dates[0].startDate;
+      const endDate = dates[0].endDate;
+
+      if (startDate >= endDate) {
+        setError(true);
+        Swal.fire({
+          icon: "error",
+          title: "Invalid date range",
+          text: "Please select a valid date range. The end date must be after the start date.",
+        });
+        return;
+      }
+    
       setError(false);
     
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
