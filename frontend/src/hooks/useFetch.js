@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 const useFetch = (endpoint) => {
-  const baseUrl = "https://backend-server-reservation.onrender.com/api"; 
+  const baseUrl = "https://backend-server-reservation.onrender.com/api/"; 
   const url = `${baseUrl}${endpoint}`;
 
   const [data, setData] = useState([]);
