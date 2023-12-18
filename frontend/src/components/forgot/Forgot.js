@@ -51,7 +51,6 @@ const Forgot = () => {
     });
   };
 
-
   const handleclick = async (e) => {
     e.preventDefault();
     if (userid == "") {
