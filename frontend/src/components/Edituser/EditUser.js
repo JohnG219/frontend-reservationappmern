@@ -9,7 +9,7 @@ import { Alert } from "@mui/material";
 import { ColorRing } from "react-loader-spinner";
 
 const EditUser = () => {
-  const { user, token } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [file, setFile] = useState("");
   const [info, setInfo] = useState({});
   const [loading, setLoading] = useState(false);
@@ -86,11 +86,18 @@ const EditUser = () => {
       }
 
       const apiUrl = process.env.REACT_APP_API_BASE_URL;
+      const accessToken = document.cookie
+        .split("; ")
+        .find((row) => row.startsWith("access_token"))
+        .split("=")[1];
       const res = await axios.put(
         `${apiUrl}/users/update/${user._id}`,
         updatedCredentials,
-        { headers: { "Authorization": `Bearer ${token}` } }
+        {
+          headers: { Authorization: `Bearer ${accessToken}` },
+        }
       );
+      
       setInfo({
         severity: "success",
         message: "Credentials Update Success!",
