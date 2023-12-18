@@ -2,8 +2,7 @@ import useFetch from "../../hooks/useFetch";
 import "./featuredProperties.css"
 
 const FeaturedProperties = () => {
-  const baseUrl = "https://frontend-reservationappmern.onrender.com"; 
-  const { data, loading, error } = useFetch(`${baseUrl}/api/hotels?featured=true&limit=4`);
+  const { data, loading, error } = useFetch("/hotels?featured=true&limit=4");
   
 
   return (
