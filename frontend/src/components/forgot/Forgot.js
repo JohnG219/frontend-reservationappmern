@@ -107,15 +107,14 @@ const Forgot = () => {
 
           <button
             disabled={loading}
-            onClick={handleClick}
+            onClick={handleClick}  {/* Change this line */}
             className="lButton97"
           >
-            {" "}
             Connect Email
           </button>
           <button
             disabled={loading}
-            onClick={handleclick}
+            onClick={handleClick}  {/* Change this line */}
             className="lButton97"
           >
             Reset Password
