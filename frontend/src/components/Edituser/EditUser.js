@@ -37,7 +37,7 @@ const EditUser = () => {
 
 
   //   Handle Change Function
-  const handleChange = (e) => {
+    const handleChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
     setCredentials1((prev) => ({ ...prev, [id]: value }));
@@ -52,9 +52,7 @@ const EditUser = () => {
         setPasswordError(false);
         e.target.setCustomValidity("");
       }
-      if (e.target.reportValidity) {
-        e.target.reportValidity();
-      }
+      e.target.reportValidity();
     }
   };
 
@@ -118,7 +116,6 @@ const EditUser = () => {
   };
 
   console.log(credentials1);
-  console.log("Token:", token);
   return (
     <div className="login2">
       <div className="lContainer13">
