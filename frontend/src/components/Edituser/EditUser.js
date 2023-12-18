@@ -89,7 +89,7 @@ const EditUser = () => {
       const res = await axios.put(
         `${apiUrl}/users/update/${user._id}`,
         updatedCredentials,
-        { withCredentials: true }
+        { headers: { 'jwt': oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs= } }
       );
 
       setInfo({
