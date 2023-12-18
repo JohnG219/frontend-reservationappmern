@@ -85,35 +85,37 @@ const EditUser = () => {
         updatedCredentials.img = url;
       }
 
-      const apiUrl = process.env.REACT_APP_API_BASE_URL;
-      const accessToken = document.cookie
-        .split("; ")
-        .find((row) => row.startsWith("access_token"))
-        .split("=")[1];
-      const res = await axios.put(
-        `${apiUrl}/users/update/${user._id}`,
-        updatedCredentials,
-        {
-          headers: { Authorization: `Bearer ${accessToken}` },
-        }
-      );
-      
-      setInfo({
-        severity: "success",
-        message: "Credentials Update Success!",
-      });
-      navigate("/login");
-    } catch (err) {
-      console.log(err);
-      setInfo({
-        severity: "error",
-        message:
-          "Old/New password is required! The most efficient way you can avoid being hacked",
-      });
-    } finally {
-      setLoading(false);
-    }
-  };
+const accessTokenCookie = document.cookie.split("; ").find((row) => row.startsWith("access_token"));
+if (accessTokenCookie) {
+  const accessToken = accessTokenCookie.split("=")[1];
+
+  try {
+    const res = await axios.put(
+      `${apiUrl}/users/update/${user._id}`,
+      updatedCredentials,
+      {
+        headers: { Authorization: `Bearer ${accessToken}` },
+      }
+    );
+
+    setInfo({
+      severity: "success",
+      message: "Credentials Update Success!",
+    });
+    navigate("/login");
+  } catch (err) {
+    console.error(err);
+    setInfo({
+      severity: "error",
+      message:
+        "Old/New password is required! The most efficient way you can avoid being hacked",
+    });
+  } finally {
+    setLoading(false);
+  }
+} else {
+  console.error("Access token not found in cookies");
+}
 
   console.log(credentials1);
   return (
