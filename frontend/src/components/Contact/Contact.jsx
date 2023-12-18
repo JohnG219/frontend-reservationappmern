@@ -12,6 +12,7 @@ const Contact = () => {
   const [cardNumberError, setCardNumberError] = useState(false);
   const [showSpinner, setShowSpinner] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handlePaymentClick = () => {
     setShowConfirmation(true);
