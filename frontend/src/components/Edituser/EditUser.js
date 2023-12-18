@@ -52,7 +52,9 @@ const EditUser = () => {
         setPasswordError(false);
         e.target.setCustomValidity("");
       }
-      e.target.reportValidity();
+      if (e.target.reportValidity) {
+        e.target.reportValidity();
+      }
     }
   };
 
