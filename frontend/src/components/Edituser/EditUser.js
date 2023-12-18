@@ -37,7 +37,7 @@ const EditUser = () => {
 
 
   //   Handle Change Function
-    const handleChange = (e) => {
+  const handleChange = (e) => {
     e.preventDefault();
     const { id, value } = e.target;
     setCredentials1((prev) => ({ ...prev, [id]: value }));
@@ -85,41 +85,33 @@ const EditUser = () => {
         updatedCredentials.img = url;
       }
 
-const accessTokenCookie = document.cookie.split("; ").find((row) => row.startsWith("access_token"));
+      const apiUrl = process.env.REACT_APP_API_BASE_URL;
+      const res = await axios.put(
+        `${apiUrl}/users/update/${user._id}`,
+        updatedCredentials,
+        { withCredentials: true }
+      );
 
-if (accessTokenCookie) {
-  const accessToken = accessTokenCookie.split("=")[1];
+      setInfo({
+        severity: "success",
+        message: "Credentials Update Success!",
+      });
+      navigate("/login");
+    } catch (err) {
+      console.log(err);
+      setInfo({
+        severity: "error",
+        message:
+          "Old/New password is required! The most efficient way you can avoid being hacked",
+      });
+    } finally {
+      setLoading(false);
+    }
+  };
 
-  try {
-    const res = await axios.put(
-      `${apiUrl}/users/update/${user._id}`,
-      updatedCredentials,
-      {
-        headers: { Authorization: `Bearer ${accessToken}` },
-      }
-    );
+  console.log(credentials1);
+  console.log(req.cookies); 
 
-    setInfo({
-      severity: "success",
-      message: "Credentials Update Success!",
-    });
-    navigate("/login");
-  } catch (err) {
-    console.error(err);
-    setInfo({
-      severity: "error",
-      message:
-        "Old/New password is required! The most efficient way you can avoid being hacked",
-    });
-  } finally {
-    setLoading(false);
-  }
-} else {
-  console.error("Access token not found in cookies");
-}
-  
-console.log(credentials1);
-      
   return (
     <div className="login2">
       <div className="lContainer13">
