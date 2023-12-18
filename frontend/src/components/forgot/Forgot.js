@@ -10,7 +10,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
 
 const Forgot = () => {
-  const { data, loading, error } = useFetch("/users/", "oa0F0YPnh1GorYRb79huw4JGlG1A+Nb7UYVVmQXGvNs");
+  const { data, loading, error } = useFetch(`/users/`);
   const [credentials, setCredentials] = useState("");
   const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
