@@ -109,7 +109,7 @@ const EditUser = () => {
   };
 
   console.log(credentials1);
-
+  console.log("Token:", token);
   return (
     <div className="login2">
       <div className="lContainer13">
