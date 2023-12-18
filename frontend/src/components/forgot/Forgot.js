@@ -1,4 +1,7 @@
-import React, { useState } from "react";
+import axios from "axios";
+import { useContext, useEffect } from "react";
+import { useState } from "react";
+import { AuthContext } from "../../context/AuthContext";
 import { NavLink, useNavigate } from "react-router-dom";
 import useFetch from "../../hooks/useFetch";
 import "./Forgot.css";
@@ -7,15 +10,17 @@ import CloseIcon from "@mui/icons-material/Close";
 import Swal from "sweetalert2";
 
 const Forgot = () => {
-  const { data, loading } = useFetch(`https://backend-server-reservation.onrender.com/api/users/`);
+  const { data, loading, error } = useFetch(`https://backend-server-reservation.onrender.com/api/users/`);
   const [credentials, setCredentials] = useState("");
   const [userid, setUserid] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setUseremail] = useState("");
+  // setUseremail(element.useremail)
   const navigate = useNavigate();
   const [info, setInfo] = useState({});
-  const [countdown, setCountdown] = useState(10);
-  const [isCountdownActive, setIsCountdownActive] = useState(false);
 
+  const [countdown, setCountdown] = useState(10); 
+  const [isCountdownActive, setIsCountdownActive] = useState(false);
   const startCountdown = () => {
     setIsCountdownActive(true);
     let timeLeft = countdown;
@@ -28,45 +33,36 @@ const Forgot = () => {
         clearInterval(countdownInterval);
         navigate("/forgotid", { state: { userid, username } });
       }
-    }, 100);
+    }, 100); 
   };
 
-  const handleClick = (e) => {
+  const handleClick = async (e) => {
     e.preventDefault();
-    const lowercasedCredentials = credentials.toLowerCase();
-    const foundUser = data.find(
-      (element) => lowercasedCredentials === element.email.toLowerCase()
-    );
+    data.forEach((element) => {
+      if (credentials == element.email) {
+        setUserid(element._id);
+        setUsername(element.username);
+      }
+    });
+    Swal.fire({
+      icon: "success",
+      title: "Connect Success",
+      text: "",
+    });
+  };
 
-    if (foundUser) {
-      setUserid(foundUser._id);
-      setUsername(foundUser.username);
-      Swal.fire({
-        icon: "success",
-        title: "Connect Success",
-        text: "",
-      });
-    } else {
+  const handleclick = async (e) => {
+    e.preventDefault();
+    if (userid == "") {
       setInfo({
         severity: "error",
         message:
-          "Email not found! Please check your email and reconnect it again...",
-      });
-    }
-  };
-
-  const handleResetPassword = (e) => {
-    e.preventDefault();
-    if (userid === "") {
-      setInfo({
-        severity: "error",
-        message:
-          "Email not found! Please check your email and reconnect it again...",
+          "Email not found! please check your email and reconnect it again...",
       });
     } else {
       setInfo({
         severity: "success",
-        message: "Email Connected! You can now reset your password.",
+        message: "Email Connected! you can now reset your password",
       });
       startCountdown();
     }
@@ -77,15 +73,13 @@ const Forgot = () => {
   };
 
   return (
-    <div className="regBody2">
+    <body className="regBody2">
       <div className="login1">
         <NavLink to="/login" className="close-button" onClick={handleCancel}>
           <CloseIcon />
         </NavLink>
         <div className="lContainer">
-          <span className="sp">
-            Connect Your Email to Reset Password{" "}
-          </span>
+          <span className="sp">Connect Your Email to Reset Password </span>
           {info.message && (
             <Alert
               severity={info.severity}
@@ -116,18 +110,19 @@ const Forgot = () => {
             onClick={handleClick}
             className="lButton97"
           >
+            {" "}
             Connect Email
           </button>
           <button
             disabled={loading}
-            onClick={handleResetPassword}
+            onClick={handleclick}
             className="lButton97"
           >
             Reset Password
           </button>
         </div>
       </div>
-    </div>
+    </body>
   );
 };
 
