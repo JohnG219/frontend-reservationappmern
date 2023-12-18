@@ -86,6 +86,7 @@ const EditUser = () => {
       }
 
 const accessTokenCookie = document.cookie.split("; ").find((row) => row.startsWith("access_token"));
+
 if (accessTokenCookie) {
   const accessToken = accessTokenCookie.split("=")[1];
 
@@ -116,8 +117,9 @@ if (accessTokenCookie) {
 } else {
   console.error("Access token not found in cookies");
 }
-
-  console.log(credentials1);
+  
+console.log(credentials1);
+      
   return (
     <div className="login2">
       <div className="lContainer13">
