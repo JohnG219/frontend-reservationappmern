@@ -37,33 +37,33 @@ const Forgot = () => {
   };
 
   const handleClick = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
+    data.forEach((element) => {
+      if (credentials == element.email) {
+        setUserid(element._id);
+        setUsername(element.username);
+      }
+    });
+    Swal.fire({
+      icon: "success",
+      title: "Connect Success",
+      text: "",
+    });
+  };
 
-  try {
-    const response = await axios.get(`https://backend-server-reservation.onrender.com/api/users/?email=${credentials}`);
-    const user = response.data[0];
-
-    if (user) {
-      setUserid(user._id);
-      setUsername(user.username);
-
-      Swal.fire({
-        icon: "success",
-        title: "Connect Success",
-        text: "",
+  const handleclick = async (e) => {
+    e.preventDefault();
+    if (userid == "") {
+      setInfo({
+        severity: "error",
+        message:
+          "Email not found! please check your email and reconnect it again...",
       });
     } else {
       setInfo({
-        severity: "error",
-        message: "Email not found! Please check your email and reconnect it again...",
+        severity: "success",
+        message: "Email Connected! you can now reset your password",
       });
-    }
-  } catch (error) {
-    console.error("Error fetching user:", error);
-    setInfo({
-      severity: "error",
-      message: "Error connecting email. Please try again later.",
-    });
       startCountdown();
     }
   };
@@ -107,14 +107,15 @@ const Forgot = () => {
 
           <button
             disabled={loading}
-            onClick={handleClick}  
+            onClick={handleClick}
             className="lButton97"
           >
+            {" "}
             Connect Email
           </button>
           <button
             disabled={loading}
-            onClick={handleClick}  
+            onClick={handleclick}
             className="lButton97"
           >
             Reset Password
