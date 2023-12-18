@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-const useFetch = (endpoint, token) => {
-  const baseUrl = "https://backend-server-reservation.onrender.com/api";
+const useFetch = (endpoint) => {
+  const baseUrl = "https://backend-server-reservation.onrender.com/api"; 
   const url = `${baseUrl}${endpoint}`;
 
   const [data, setData] = useState([]);
@@ -13,7 +13,7 @@ const useFetch = (endpoint, token) => {
     const fetchData = async () => {
       setLoading(true);
       try {
-        const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
+        const res = await axios.get(url);
         setData(res.data);
       } catch (err) {
         setError(err);
@@ -21,12 +21,12 @@ const useFetch = (endpoint, token) => {
       setLoading(false);
     };
     fetchData();
-  }, [url, token]);
+  }, [url]);
 
   const reFetch = async () => {
     setLoading(true);
     try {
-      const res = await axios.get(url, { headers: { Authorization: `Bearer ${token}` } });
+      const res = await axios.get(url);
       setData(res.data);
     } catch (err) {
       setError(err);
