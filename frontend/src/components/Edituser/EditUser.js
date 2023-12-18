@@ -94,7 +94,9 @@ const EditUser = () => {
         severity: "success",
         message: "Credentials Update Success!",
       });
-      navigate("/login");
+      setTimeout(() => {
+        navigate("/login");
+      }, 2000); 
     } catch (err) {
       console.log(err);
       setInfo({
