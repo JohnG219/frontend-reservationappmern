@@ -1,61 +1,85 @@
 import axios from "axios";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
-import "./Forgotid.css";
-import { NavLink, useLocation, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import useFetch from "../../hooks/useFetch";
+import "./Forgot.css";
 import { Alert } from "@mui/material";
+import CloseIcon from "@mui/icons-material/Close";
+import Swal from "sweetalert2";
 
-const Forgotid = () => {
-  const location = useLocation();
-  const [userid, setUserid] = useState(location.state.userid);
-  const [username, setUsername] = useState(location.state.username);
-  const [info, setInfo] = useState({});
-  const [credentials, setCredentials] = useState({
-    password: undefined,
-    password2: undefined,
-  });
-
-  const { loading, error, dispatch } = useContext(AuthContext);
+const Forgot = () => {
+  const { data, loading, error } = useFetch(`https://backend-server-reservation.onrender.com/api/users/`);
+  const [credentials, setCredentials] = useState("");
+  const [userid, setUserid] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setUseremail] = useState("");
+  // setUseremail(element.useremail)
   const navigate = useNavigate();
+  const [info, setInfo] = useState({});
 
-  //   Handle Change Function
-  const handleChange = (e) => {
-    e.preventDefault();
-    setCredentials((prev) => ({ ...prev, [e.target.id]: e.target.value }));
+  const [countdown, setCountdown] = useState(10); 
+  const [isCountdownActive, setIsCountdownActive] = useState(false);
+  const startCountdown = () => {
+    setIsCountdownActive(true);
+    let timeLeft = countdown;
+
+    const countdownInterval = setInterval(() => {
+      timeLeft--;
+      setCountdown(timeLeft);
+
+      if (timeLeft === 0) {
+        clearInterval(countdownInterval);
+        navigate("/forgotid", { state: { userid, username } });
+      }
+    }, 100); 
   };
 
-  //Handle Click Function
   const handleClick = async (e) => {
     e.preventDefault();
-
-    try {
-      if (credentials.password == credentials.password2) {
-        const res = await axios.put(`https://backend-server-reservation.onrender.com/api/users/update/${userid}`, credentials);
-        setInfo({
-          severity: "success",
-          message: "Your password has been changed",
-        });
-        setTimeout(() => {
-        navigate("/login");
-      }, 1000); 
-      } else {
-        setInfo({
-          severity: "error",
-          message: "password not matched",
-        });
+    data.forEach((element) => {
+      if (credentials == element.email) {
+        setUserid(element._id);
+        setUsername(element.username);
       }
-    } catch (err) {
-      setInfo({ severity: "error", message: "Error, please fill each field" });
+    });
+    Swal.fire({
+      icon: "success",
+      title: "Connect Success",
+      text: "",
+    });
+  };
+
+  const handleclick = async (e) => {
+    e.preventDefault();
+    if (userid == "") {
+      setInfo({
+        severity: "error",
+        message:
+          "Email not found! please check your email and reconnect it again...",
+      });
+    } else {
+      setInfo({
+        severity: "success",
+        message: "Email Connected! you can now reset your password",
+      });
+      startCountdown();
     }
   };
 
-  return (
-    <body className="regBody4">
-      <div className="login3">
-        <div className="aContainer">
-          <span className="sp5">Reset Password: {username}</span>
+  const handleCancel = () => {
+    navigate("/");
+  };
 
+  return (
+    <body className="regBody2">
+      <div className="login1">
+        <NavLink to="/login" className="close-button" onClick={handleCancel}>
+          <CloseIcon />
+        </NavLink>
+        <div className="lContainer">
+          <span className="sp">Connect Your Email to Reset Password </span>
           {info.message && (
             <Alert
               severity={info.severity}
@@ -65,8 +89,8 @@ const Forgotid = () => {
                 maxWidth: "400px",
                 fontSize: "13px",
                 position: "fixed",
-                left: "33%",
-                top: "27%",
+                left: "36%",
+                top: "29%",
               }}
             >
               {info.message}
@@ -74,21 +98,27 @@ const Forgotid = () => {
           )}
 
           <input
-            type="password"
-            className="lInput3"
-            placeholder="New Password"
-            id="password"
-            onChange={handleChange}
+            type="text"
+            className="lInput"
+            placeholder="Email"
+            id="email"
+            onChange={(e) => setCredentials(e.target.value)}
           />
-          <input
-            type="password"
-            className="lInput3"
-            placeholder="Confirm Password"
-            id="password2"
-            onChange={handleChange}
-          />
-          <button disabled={loading} onClick={handleClick} className="Button12">
-            Confirm
+
+          <button
+            disabled={loading}
+            onClick={handleClick}
+            className="lButton97"
+          >
+            {" "}
+            Connect Email
+          </button>
+          <button
+            disabled={loading}
+            onClick={handleclick}
+            className="lButton97"
+          >
+            Reset Password
           </button>
         </div>
       </div>
@@ -96,4 +126,4 @@ const Forgotid = () => {
   );
 };
 
-export default Forgotid;
+export default Forgot;
