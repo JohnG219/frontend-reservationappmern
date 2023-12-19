@@ -158,7 +158,7 @@ const About = () => {
                         rows="6"
                         className="form-control"
                         id="message"
-                        placeholder="sent message..."
+                        placeholder="send message..."
                         required
                       ></textarea>
                     </fieldset>
