@@ -95,7 +95,7 @@ const About = () => {
                             </div>
                             <div className="col-md-12">
                                 <fieldset>
-                                    <button type="submit" id="form-submit" className="btn">Submit</button>
+                                    <button type="submit" id="form-submit" className="btnyagba">Submit</button>
                                 </fieldset>
                             </div>
                         </div>
