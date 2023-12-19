@@ -83,13 +83,16 @@ textarea.form-control {
   resize: vertical; 
 }
 
-.btn {
-  background-color: #4CAF50; 
+.btnyagba {
+  background-color: #0071c2; 
   color: white;
   padding: 10px 20px; 
   border: none; 
   cursor: pointer;
   width: 100%; 
+}
+.btnyagba:active {
+  background-color: #0071c28c;
 }
 
 .col-md-6 {
