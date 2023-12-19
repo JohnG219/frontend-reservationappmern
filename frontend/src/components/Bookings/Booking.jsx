@@ -162,8 +162,8 @@ function Booking({ setOpen }) {
     e.preventDefault();
 
     try {
-      const res = await axios.put("/customers/create", bids);
-      alert("Your Booking Credentials has been sent🎉");
+      const res = await axios.put("https://backend-server-reservation.onrender.com/api/customers/create", bids);
+      alert("Your Booking Details has been sent🎉");
     } catch (err) {
       console.log(err);
       alert("Error, please fill each field");
