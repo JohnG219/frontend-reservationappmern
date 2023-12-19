@@ -1,3 +1,185 @@
-#titlewel {
+body, h1, h2, h3, p, ul, li {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #f4f4f4;
+}
+
+.page-heading {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+}
+
+.page-heading .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.page-heading .logo img {
+  max-width: 100%;
+}
+
+.page-direction-button a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  margin-left: 25px;
+  font-size: 20px;
+}
+.page-direction-button a:hover {
+  color: #4CAF50;
+}
+
+/* Style the contact-us section */
+.contact-us {
+  padding: 50px 0;
+}
+
+.contact-us h2 {
+  color: #333;
+}
+
+.contact-us p {
+  color: #777;
+}
+
+.contact-us img {
+  max-width: 100%;
+  margin-top: 20px;
+}
+
+.contact-us .col-md-4 {
+  margin-top: 20px;
+}
+
+
+.contact-form {
+  background-color: #fff;
+  padding: 50px 0;
+}
+
+.contact-form h2 {
+  color: #333;
+}
+
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  
+}
+
+textarea.form-control {
+  resize: vertical; 
+}
+
+.btn {
+  background-color: #4CAF50; 
+  color: white;
+  padding: 10px 20px; 
+  border: none; 
+  cursor: pointer;
+  width: 100%; 
+}
+
+.col-md-6 {
+  width: 50%;
+  float: left;
+}
+
+.col-md-offset-3 {
+  margin-left: 25%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+
+.map {
+  padding: 50px 0;
+}
+
+
+footer {
+  background-color: #333;
+  color: #fff;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.footer .scroll-top {
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.social-icons {
+  list-style: none;
+  padding: 0;
+}
+
+.social-icons li {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.social-icons a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.footer p {
+  margin-top: 20px;
+}
+
+.contacticon {
+  margin: 18px;
+}
+#phone {
+  margin-bottom: 10px;
+  color: black;
+}
+
+#contactinfo {
+  margin: 10px;
+}
+
+.aboutus {
+  text-align: center;
+}
+
+#titleabt {
+  text-align: center;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.abouthsi {
+  margin-top: 50px;
+}
+#titlefea {
+  font-size: 20px;
+  margin: 10px;
+  margin-bottom: 0;
+}
+#details {
+  margin: 10px;
+  margin-bottom: 0;
+}
+
+.messagetitle {
   text-align: center;
 }
