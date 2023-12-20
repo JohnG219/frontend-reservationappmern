@@ -5,6 +5,11 @@ import {
   faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 import "./header.css";
+import SG from "./images/sing.png"
+import AUS from "./images/aus.png"
+import PH from "./images/ph.png"
+import NOR from "./images/nor.png"
+import SWIT from "./images/swit.png"
 import "react-date-range/dist/styles.css";
 import "react-date-range/dist/theme/default.css";
 import { DateRange } from "react-date-range";
@@ -79,7 +84,7 @@ const Header = ({ type }) => {
        return;
      }
 
-    const startDate = dates[0].startDate;
+      const startDate = dates[0].startDate;
       const endDate = dates[0].endDate;
 
       if (startDate >= endDate) {
@@ -91,7 +96,7 @@ const Header = ({ type }) => {
         });
         return;
       }
-    
+
       setError(false);
     
     dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
@@ -111,31 +116,11 @@ const Header = ({ type }) => {
             <FontAwesomeIcon icon={faBed} />
             <span>Stay in</span>
           </div>
-          <img
-            src="https://www.pngkit.com/png/full/193-1938782_illustration-of-flag-of-singapore-singapore-flag-round.png"
-            alt=""
-            className="featuredImg3"
-          />
-          <img
-            src="https://www.pngkit.com/png/full/542-5428128_australia-flag-png-transparent-quality-images-png-only.png"
-            alt=""
-            className="featuredImg1"
-          />
-          <img
-            src="https://www.pngkit.com/png/full/100-1006469_free-philippine-flag-png-rules-of-survival-philippines.png"
-            alt=""
-            className="featuredImg1"
-          />
-          <img
-            src="https://www.pngkit.com/png/full/423-4231687_25-norway-norway-national-football-team.png"
-            alt=""
-            className="featuredImg1"
-          />
-          <img
-            src="https://www.pngkit.com/png/full/329-3296114_illustration-of-flag-of-switzerland-switzerland-flag-icon.png"
-            alt=""
-            className="featuredImg2"
-          />
+          <img className="featuredImg3" src={SG} alt="" />
+          <img className="featuredImg1" src={AUS} alt="" />
+          <img className="featuredImg1" src={PH} alt="" />
+          <img className="featuredImg1" src={NOR} alt="" />
+          <img className="featuredImg2" src={SWIT} alt="" />
         </div>
         {type !== "list" && (
           <>
