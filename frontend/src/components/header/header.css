@@ -88,17 +88,17 @@
 }
 
 .featuredImg1 {
-    width: 6%;
+    width: 67px;
     height: 6%;
     object-fit: cover;
 }
 .featuredImg2 {
-    width: 87px;
-    height: 8%;
+    width: 73px;
+    height: 6%;
     object-fit: cover;
 }
 .featuredImg3 {
-    width: 67px;
+    width: 72px;
     height: 6%;
     object-fit: cover;
 }
