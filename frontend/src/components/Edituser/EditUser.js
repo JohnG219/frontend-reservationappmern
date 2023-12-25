@@ -6,7 +6,6 @@ import "./Edituser.css";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import DriveFolderUploadOutlinedIcon from "@mui/icons-material/DriveFolderUploadOutlined";
 import { Alert } from "@mui/material";
-import { ColorRing } from "react-loader-spinner";
 
 const EditUser = () => {
   const { user } = useContext(AuthContext);
@@ -113,7 +112,7 @@ const EditUser = () => {
   
   return (
     <div className="login2">
-      <div className="lContainer13">
+      <div className="lContainer133">
         <img
           src={
             file
@@ -139,14 +138,7 @@ const EditUser = () => {
             style={{ display: "none" }}
           />
 
-          <button className="lButton300">
-            <NavLink
-              to="/"
-              style={{ color: "inherit", textDecoration: "none" }}
-            >
-              Home
-            </NavLink>
-          </button>
+          
           <span className="sp22">
             Update profile info, {user.username} <br></br>
           </span>
@@ -217,30 +209,11 @@ const EditUser = () => {
             onChange={handleChange}
           />
         </div>
-        <div class="newring">
-          {loading ? (
-            <div style={{ position: "relative", left: "27px" }}>
-              <ColorRing
-                type="ThreeDots"
-                color="#00BFFF"
-                height={50}
-                width={50}
-                style={{
-                  position: "absolute",
-                  top: "50%",
-                  left: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
-            </div>
-          ) : (
-            <button onClick={handleClick} className="lButton99">
+            <button onClick={handleClick} className="lButton999">
               Confirm
             </button>
-          )}
         </div>
       </div>
-    </div>
   );
 };
 
