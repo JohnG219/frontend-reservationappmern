@@ -7,28 +7,23 @@
 body .regBody4 {
   display: flex;
   height: 100vh;
-  background-color: #443355;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-  background-size: cover;
+  background-color: #f4f4f4;
+  display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .login3 {
     background-color: #FFFFFF;
-    margin-left: 27%;
-    margin-top: 8%;
-    width: 40%;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-image: url("./images/logo.png");
-    background-repeat: no-repeat;
     border-style: none;
     border-radius: 9px;
     background-size: 120px;
     display: flex;
     flex-wrap: wrap;
-    height: 70%;
+    height: fit-content;
   }
   
   .aContainer {
@@ -84,6 +79,6 @@ body .regBody4 {
   }
 
 .lInput3 {
-    height: 45px;
+  height: 45px;
     padding: 10px;
   }
