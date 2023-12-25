@@ -20,7 +20,7 @@ const Navbar = (params) => {
         navigate("/profile")
       }
       
-  return(
+   return(
         <div className="navbar">
             <div className="navContainer">
               <Link to="/" style={{color:"inherit",textDecoration:"none"}}>
