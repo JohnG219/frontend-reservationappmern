@@ -4,30 +4,30 @@
   padding: 0;
 }
 
-body .regBody2 {
+body .regBody123 {
   display: flex;
   height: 100vh;
-  background-color: #443355;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  background-color: #f4f4f4;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
 }
 
-.login1 {
-  flex-wrap: wrap;
-  display: flex;
-  margin-top: 10%;
-  margin-left: 30%;
-  height: 400px;
-  width: 40%;
-  border-style: none;
-  border-radius: 7px;
-  display: flex;
-  align-items: center;
+.login123 {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 400px;
+  height: fit-content;
   justify-content: center;
-  background-color: #FFFFFF;
-  background-image: url("./images/logo.png");
-  background-size: 100px;
-  background-repeat: no-repeat;
+  align-items: center;
+  text-align: center;
+}
+
+.Container99 {
+  padding: 20px;
 }
 
 .error {
@@ -48,6 +48,8 @@ body .regBody2 {
   font-weight: bold;
   cursor: pointer;
   border-radius: 5px;
+  width: 100%;
+  margin-top: 10px;
 }
 .lButton97:active {
   background-color: #0071c28c;
@@ -61,9 +63,5 @@ body .regBody2 {
 }
 
 .close-button {
- margin-left: 35%;
- display: flex;
- margin-bottom: 25%;
- position: fixed;
- flex-wrap: wrap;
-}
+  flex-wrap: wrap;
+ }
