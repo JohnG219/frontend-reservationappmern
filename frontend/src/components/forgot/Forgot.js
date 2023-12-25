@@ -73,12 +73,12 @@ const Forgot = () => {
   };
 
   return (
-    <body className="regBody2">
-      <div className="login1">
+    <body className="regBody123">
+      <div className="login123">
         <NavLink to="/login" className="close-button" onClick={handleCancel}>
           <CloseIcon />
         </NavLink>
-        <div className="lContainer">
+        <div className="Container99">
           <span className="sp">Connect Your Email to Reset Password </span>
           {info.message && (
             <Alert
