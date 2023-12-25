@@ -54,7 +54,7 @@ const Featured = () => {
             />
             <div className="featuredTitles">
               <h1 id="featitle">Japan</h1>
-              <h2 id="fea">Comming soon...</h2>
+              <h2 id="fea">Coming soon...</h2>
             </div>
           </div>
 
