@@ -64,7 +64,7 @@ const Login = () => {
   return (
     <body className="logBody">
       <div className="login">
-        <h1 className="titleLog">Login</h1>
+
         <div className="lContainer">
           <input
             type="text"
