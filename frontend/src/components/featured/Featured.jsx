@@ -19,7 +19,7 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1 id="fea">Singapore</h1>
+              <h1 id="featitle">Singapore</h1>
               <h2 id="fea">{data[0]} properties</h2>
             </div>
           </div>
@@ -30,7 +30,7 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1 id="fea">Australia</h1>
+              <h1 id="featitle">Australia</h1>
               <h2 id="fea">{data[1]} properties</h2>
             </div>
           </div>
@@ -41,8 +41,20 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1 id="fea">Philippines</h1>
+              <h1 id="featitle">Philippines</h1>
               <h2 id="fea">{data[2]} properties</h2>
+            </div>
+          </div>
+
+          <div className="featuredItem">
+            <img
+              src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/463271183.jpg?k=0dda66a2440a7b0df0a1c9001ff97d25a6b7dfa2cb06f84a5aea6c29a533ce26&o=&hp=1"
+              alt=""
+              className="featuredImg"
+            />
+            <div className="featuredTitles">
+              <h1 id="featitle">Japan</h1>
+              <h2 id="fea">Comming soon...</h2>
             </div>
           </div>
 
@@ -53,7 +65,7 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1 id="fea">Norway</h1>
+              <h1 id="featitle">Norway</h1>
               <h2 id="fea">{data[3]} properties</h2>
             </div>
           </div>
@@ -65,7 +77,7 @@ const Featured = () => {
               className="featuredImg"
             />
             <div className="featuredTitles">
-              <h1 id="fea">Switzerland</h1>
+              <h1 id="featitle">Switzerland</h1>
               <h2 id="fea">{data[4]} properties</h2>
             </div>
           </div>
