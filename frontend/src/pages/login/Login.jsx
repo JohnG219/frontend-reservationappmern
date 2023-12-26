@@ -7,10 +7,10 @@ import { Alert } from "@mui/material";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
-    username: "",
+    email: "",
     password: "",
     error: {
-      username: false,
+      email: false,
       password: false,
     },
   });
@@ -33,16 +33,15 @@ const Login = () => {
   const handleClick = async (e) => {
     e.preventDefault();
 
-    if (!credentials.username || !credentials.password) {
+    if (!credentials.email || !credentials.password) {
       setCredentials((prev) => ({
         ...prev,
         error: {
-          username: !credentials.username,
+          email: !credentials.email,
           password: !credentials.password,
         },
       }));
       return;
-    }
 
     dispatch({ type: "LOGIN_START" });
     try {
@@ -68,10 +67,10 @@ const Login = () => {
         <div className="lContainer">
           <input
             type="text"
-            placeholder="Username"
-            id="username"
+            placeholder="Email"
+            id="email"
             onChange={handleChange}
-            className={`lInput ${credentials.error.username ? "error" : ""}`}
+            className={`lInput ${credentials.error.email ? "error" : ""}`}
           />
           <input
             type="password"
