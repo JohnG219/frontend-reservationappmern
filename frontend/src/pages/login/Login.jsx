@@ -42,6 +42,7 @@ const Login = () => {
         },
       }));
       return;
+    }
 
     dispatch({ type: "LOGIN_START" });
     try {
@@ -63,7 +64,6 @@ const Login = () => {
   return (
     <body className="logBody">
       <div className="login">
-
         <div className="lContainer">
           <input
             type="text"
