@@ -185,32 +185,6 @@ function Booking({ setOpen }) {
     <div className="mainContainer">
       <div className="contentArea1">
         <div className="right1">
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
-          <br></br>
           <h1>Reservation Complete</h1>
           <div className="details" id="printablediv">
             <hr className="hr2" />
