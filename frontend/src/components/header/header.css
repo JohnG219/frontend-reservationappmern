@@ -8,8 +8,6 @@
 }
 
 .headerContainer{
-    width: 100%;
-    max-width: 1024px;
     margin: 20px 0px 75px 0px;   
 }
 
@@ -66,7 +64,7 @@
     border-radius: 5px;
     position:absolute;
     bottom: -25px;
-    width: 100%;
+    width: 50%;
     max-width: 1024px;
 }
 
