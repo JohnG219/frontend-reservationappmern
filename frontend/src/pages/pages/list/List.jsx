@@ -7,6 +7,7 @@ import { format } from "date-fns";
 import { DateRange } from "react-date-range";
 import SearchItem from "../../components/searchItem/SearchItem";
 import useFetch from "../../hooks/useFetch";
+import Booking from "../../components/Bookings/Booking";
 
 const List = () => {
   const location = useLocation();
@@ -16,6 +17,7 @@ const List = () => {
   const [options, setOptions] = useState(location.state.options);
   const [min, setMin] = useState(undefined);
   const [max, setMax] = useState(undefined);
+  const [open, setOpen] = useState(false);
 
   const { data, loading, error, reFetch } = useFetch(
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
@@ -34,15 +36,15 @@ const List = () => {
           <div className="listSearch">
             <h1 className="lsTitle">Search</h1>
             <div className="lsItem">
-              <label>Destination</label>
-              <input placeholder={destination} type="text" />
+              <label id="emp">Destination</label>
+              <p id="desti">{destination}</p>
             </div>
             <div className="lsItem">
-              <label>Check-in Date</label>
-              <span onClick={() => setOpenDate(!openDate)}>{`${format(
+              <label id="emp">Check-in Date</label>
+              <span onClick={() => !openDate}>{`${format(
                 dates[0].startDate,
-                "MM/dd/yyyy"
-              )} to ${format(dates[0].endDate, "MM/dd/yyyy")}`}</span>
+                "MMM dd, yyyy"
+              )} to ${format(dates[0].endDate, "MMM dd, yyyy")}`}</span>
               {openDate && (
                 <DateRange
                   onChange={(item) => setDates([item.selection])}
@@ -52,7 +54,7 @@ const List = () => {
               )}
             </div>
             <div className="lsItem">
-              <label>Options</label>
+              <label id="emp">Options</label>
               <div className="lsOptions">
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
@@ -72,33 +74,6 @@ const List = () => {
                     type="number"
                     onChange={(e) => setMax(e.target.value)}
                     className="lsOptionInput"
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Adult</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    placeholder={options.adult}
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Children</span>
-                  <input
-                    type="number"
-                    min={0}
-                    className="lsOptionInput"
-                    placeholder={options.children}
-                  />
-                </div>
-                <div className="lsOptionItem">
-                  <span className="lsOptionText">Room</span>
-                  <input
-                    type="number"
-                    min={1}
-                    className="lsOptionInput"
-                    placeholder={options.room}
                   />
                 </div>
               </div>
