@@ -16,7 +16,7 @@ const Footer = () => {
           <FaAddressBook className="footerIcon" />
         </a>
       </div>
-      <div className="fText">JOHNGONZALES Project@2023</div>
+      <div className="fText">©JohnGonzales Project 2023</div>
     </div>
   );
 };
