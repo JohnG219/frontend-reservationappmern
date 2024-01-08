@@ -233,8 +233,8 @@ const About = () => {
                 </li>
               </ul>
             </div>
-            <div className="col-md-12">
-              <p>JOHNERICKGONZALES &copy; Project 2023</p>
+             <div className="col-md-12">
+              <p>&copy;JohnGonzales Project 2023</p>
             </div>
           </div>
         </div>
