@@ -34,12 +34,14 @@ const Profile = () => {
       <div className="contentArea">
         <div className="right">
           <h1>Profile</h1>
+          <div className="profilepic">  
           <img
             required
-            className="img"
+            className="imgprofile"
             src={user.img ? user.img : "https://i.ibb.co/MBtjqXQ/no-avatar.gif"}
             alt=""
           />
+          </div>
           <div className="details">
             <h1 className="itemTitle"></h1>
             <div className="detailItem">
