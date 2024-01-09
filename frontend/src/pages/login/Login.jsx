@@ -4,6 +4,8 @@ import { useNavigate, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
 import "./login.css";
 import { Alert } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { CircularProgress } from "@material-ui/core";
 
 const Login = () => {
   const [credentials, setCredentials] = useState({
@@ -13,10 +15,18 @@ const Login = () => {
       email: false,
       password: false,
     },
+    showPassword: false,
   });
 
   const { loading, error, dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+
+  const handleTogglePasswordVisibility = () => {
+    setCredentials((prev) => ({
+      ...prev,
+      showPassword: prev.password.length > 0 ? !prev.showPassword : false,
+    }));
+  };  
 
   const handleChange = (e) => {
     const { id, value } = e.target;
@@ -67,20 +77,28 @@ const Login = () => {
         <div className="lContainer">
           <input
             type="text"
-            placeholder="Email"
+            placeholder={credentials.error.email ? "Email is required" : "Email"}
             id="email"
             onChange={handleChange}
             className={`lInput ${credentials.error.email ? "error" : ""}`}
           />
           <input
-            type="password"
-            placeholder="Password"
+            type={credentials.showPassword ? "text" : "password"}
+            placeholder={credentials.error.email ? "Password is required" : "Password"}
             id="password"
+            value={credentials.password}
             onChange={handleChange}
             className={`lInput ${credentials.error.password ? "error" : ""}`}
           />
+          <div className="password-icon" onClick={handleTogglePasswordVisibility}>
+            {credentials.showPassword && credentials.password.length > 0 ? (
+              <VisibilityOff />
+            ) : (
+              credentials.password.length > 0 && <Visibility />
+            )}
+          </div>
           <button disabled={loading} onClick={handleClick} className="lButton">
-            Login
+          {loading ? <CircularProgress size={19} color="white" /> : "Login"}
           </button>
         </div>
         {error && <span class="colorspan">{error.message}</span>}
