@@ -3,13 +3,13 @@ import "./featured.css";
 
 const Featured = () => {
   const { data, loading, error } = useFetch(
-    "/hotels/countByCity?cities=singapore,australia,philippines,norway,switzerland"
+    "hotels/countByCity?cities=singapore,australia,philippines,norway,switzerland"
   );
 
   return (
     <div className="featured">
       {loading ? (
-        "Loading... please wait... Don't reload or leave the page."
+        "Loading..."
       ) : (
         <>
           <div className="featuredItem">
@@ -54,7 +54,7 @@ const Featured = () => {
             />
             <div className="featuredTitles">
               <h1 id="featitle">Japan</h1>
-              <h2 id="fea">Coming soon...</h2>
+              <h2 id="fea1">Comming soon...</h2>
             </div>
           </div>
 
