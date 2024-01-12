@@ -45,7 +45,6 @@
   margin: 5px 0;
   font-size: 23px;
   font-family: Georgia, 'Times New Roman', Times, serif;
-  color: #000;
 }
 
 .featured:empty::after {
